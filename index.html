@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Bubble Shooter Fun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bg-music" src="assets/bg-music.mp3" loop></audio>
+
+    <div id="app-container">
+        <div id="home-screen" class="screen active">
+            <h1 class="main-title">
+                <span class="c1">B</span><span class="c2">U</span><span class="c3">B</span><span class="c4">B</span><span class="c5">L</span><span class="c6">E</span>
+                <br> 
+                <span class="c7">S</span><span class="c8">H</span><span class="c1">O</span><span class="c2">O</span><span class="c3">T</span><span class="c4">E</span><span class="c5">R</span>
+            </h1>
+            <div class="difficulty-selector">
+                <h2 class="sub-title">CHOOSE DIFFICULTY</h2>
+                <div class="difficulty-options">
+                    <button class="difficulty-btn" data-difficulty="easy">EASY</button>
+                    <button class="difficulty-btn" data-difficulty="medium">MEDIUM</button>
+                    <button class="difficulty-btn" data-difficulty="hard">HARD</button>
+                </div>
+            </div>
+            <button id="start-game-btn" class="action-btn">START GAME</button>
+            <div class="how-to-play">
+                <h3 class="sub-title">HOW TO PLAY</h3>
+                <p>Aim with your mouse or finger and click/tap to shoot. Match 3 or more bubbles of the same color to pop them. Don't let the bubbles reach the bottom line!</p>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <header class="game-header">
+                <div class="ui-item">
+                    <span>LEVEL</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="ui-item">
+                    <span>SCORE</span>
+                    <span id="score">0</span>
+                </div>
+            </header>
+            <main id="game-canvas-container">
+                <canvas id="game-canvas"></canvas>
+            </main>
+            <footer class="game-controls">
+                <button id="pause-btn" class="control-btn"><i class="fas fa-pause"></i></button>
+                <button id="exit-btn" class="control-btn"><i class="fas fa-sign-out-alt"></i></button>
+            </footer>
+        </div>
+    </div>
+    
+    <div id="pause-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">
+                <span class="c2">P</span><span class="c3">A</span><span class="c4">U</span><span class="c5">S</span><span class="c6">E</span><span class="c7">D</span>
+            </h2>
+            <div class="modal-buttons">
+                <button id="resume-btn" class="action-btn">RESUME</button>
+                <button id="exit-modal-btn" class="action-btn secondary">EXIT TO MENU</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">
+                <span class="c1">G</span><span class="c2">A</span><span class="c3">M</span><span class="c4">E</span>
+                <span class="c5">O</span><span class="c6">V</span><span class="c7">E</span><span class="c8">R</span>
+            </h2>
+            <p>Final Score: <span id="final-score"></span></p>
+            <button id="play-again-btn" class="action-btn">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
