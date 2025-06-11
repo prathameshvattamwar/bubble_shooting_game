@@ -1,0 +1,226 @@
+
+:root {
+    --bg-color: #f0f8ff;
+    --panel-bg: #ffffff;
+    --text-color: #4a4a4a;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --c1: #3498db; --c1-dark: #2980b9;
+    --c2: #e74c3c; --c2-dark: #c0392b;
+    --c3: #2ecc71; --c3-dark: #27ae60;
+    --c4: #f1c40f; --c4-dark: #f39c12;
+    --c5: #9b59b6; --c5-dark: #8e44ad;
+    --c6: #1abc9c; --c6-dark: #16a085;
+    --c7: #e67e22; --c7-dark: #d35400;
+    --c8: #34495e; --c8-dark: #2c3e50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #d4eaf7;
+    background-image: linear-gradient(135deg, #d4eaf7 0%, #a7c5eb 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app-container {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 950px;
+    padding: 15px;
+    background: var(--panel-bg);
+    border-radius: 30px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+.screen.active { display: flex; }
+
+#home-screen {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.main-title, .modal-title {
+    font-family: 'Lilita One', cursive;
+    font-size: clamp(1.8rem, 9vw, 3.5rem);
+    line-height: 1.1;
+    text-align: center;
+}
+
+.main-title span, .modal-title span {
+    display: inline-block;
+    position: relative;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.15);
+}
+
+.main-title .c1, .modal-title .c1 { color: var(--c1); }
+.main-title .c2, .modal-title .c2 { color: var(--c2); }
+.main-title .c3, .modal-title .c3 { color: var(--c3); }
+.main-title .c4, .modal-title .c4 { color: var(--c4); }
+.main-title .c5, .modal-title .c5 { color: var(--c5); }
+.main-title .c6, .modal-title .c6 { color: var(--c6); }
+.main-title .c7, .modal-title .c7 { color: var(--c7); }
+.main-title .c8, .modal-title .c8 { color: var(--c8); }
+
+.sub-title {
+    font-family: 'Lilita One', cursive;
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.difficulty-options { display: flex; gap: 15px; }
+
+.difficulty-btn, .action-btn, .control-btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    position: relative;
+}
+
+.difficulty-btn {
+    background: #eef2f3;
+    color: #888;
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+}
+.difficulty-btn.selected, .difficulty-btn:hover {
+    background: var(--c4);
+    color: white;
+    border-color: var(--c4-dark);
+    transform: translateY(-2px);
+}
+
+.action-btn {
+    background: var(--c3);
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 0 var(--c3-dark);
+}
+.action-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--c3-dark); }
+.action-btn:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--c3-dark); }
+.action-btn.secondary { background: #e74c3c; box-shadow: 0 5px 0 #c0392b; }
+.action-btn.secondary:hover { box-shadow: 0 7px 0 #c0392b; }
+.action-btn.secondary:active { box-shadow: 0 3px 0 #c0392b; }
+
+.how-to-play {
+    max-width: 350px;
+    background: rgba(255,255,255,0.5);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#game-screen { justify-content: space-between; }
+
+.game-header {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    flex-shrink: 0;
+}
+
+.ui-item { text-align: center; }
+.ui-item span:first-child { font-size: 0.8rem; font-weight: 600; opacity: 0.7; }
+.ui-item span:last-child { font-family: 'Lilita One', cursive; font-size: 1.8rem; color: var(--c8); }
+
+#game-canvas-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    min-height: 0;
+}
+
+#game-canvas {
+    background: #e9f2f9;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+.control-btn {
+    background: var(--c5);
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 0 var(--c5-dark);
+}
+.control-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--c5-dark); }
+.control-btn:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--c5-dark); }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s;
+}
+.modal.show { display: flex; }
+
+.modal-content {
+    background: var(--panel-bg);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 90%;
+}
+.modal-title { font-size: 2.5rem; margin-bottom: 20px; }
+.modal-content p { margin-bottom: 30px; font-size: 1.2rem; color: #555; font-weight: 600; }
+.modal-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
